@@ -9,7 +9,6 @@ var indexRouter = require("./components/products");
 var profileRouter = require("./routes/profile");
 var loginRouter = require("./routes/login");
 var registerRouter = require("./routes/register");
-var addRouter = require("./routes/product_add_form");
 
 var app = express();
 
@@ -24,10 +23,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/product", express.static(path.join(__dirname, "public")));
 
+app.use("/", indexRouter);
 app.use("/product", indexRouter);
 app.use("/login", loginRouter);
 app.use("/register", registerRouter);
-app.use("/product_add_form", addRouter);
 
 app.use("/profile", profileRouter);
 
