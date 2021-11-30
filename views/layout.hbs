@@ -1,189 +1,325 @@
-<!DOCTYPE html>
 <html lang="en">
 
-
-<!-- Mirrored from motaadmin.dexignlab.com/xhtml/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Aug 2021 07:51:27 GMT -->
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+  <!-- Mirrored from motaadmin.dexignlab.com/xhtml/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Aug 2021 07:51:27 GMT -->
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Admin Dashboard </title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png" />
     <!-- Datatable -->
-    <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
+
     <!-- Custom Stylesheet -->
-    	<link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link
+      href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/style.css" rel="stylesheet" />
 
-</head>
+  </head>
 
-<body>
-
-    <!--*******************
-        Preloader start
-    ********************-->
-    <div id="preloader">
-        <div class="sk-three-bounce">
-            <div class="sk-child sk-bounce1"></div>
-            <div class="sk-child sk-bounce2"></div>
-            <div class="sk-child sk-bounce3"></div>
-        </div>
-    </div>
-    <!--*******************
-        Preloader end
-    ********************-->
-
+  <body>
 
     <!--**********************************
         Main wrapper start
     ***********************************-->
     <div id="main-wrapper">
 
-        <!--**********************************
+      <!--**********************************
             Nav header start
         ***********************************-->
-        <div class="nav-header">
-            <a href="#" class="brand-logo">
-                <img class="logo-abbr" src="images/logo-white.png" alt="">
-                <img class="logo-compact" src="images/logo-text.png" alt="">
-                <img class="brand-title" src="images/logo-text.png" alt="">
-            </a>
+      <div class="nav-header">
+        <a href="/product" class="brand-logo">
+          <img class="logo-abbr" src="images/logo-white.png" alt="" />
+          <img class="logo-compact" src="images/logo-text.png" alt="" />
+          <img class="brand-title" src="images/logo-text.png" alt="" />
+        </a>
 
-            <div class="nav-control">
-                <div class="hamburger">
-                    <span class="line"></span><span class="line"></span><span class="line"></span>
-                </div>
-            </div>
+        <div class="nav-control">
+          <div class="hamburger">
+            <span class="line"></span><span class="line"></span><span
+              class="line"
+            ></span>
+          </div>
         </div>
-        <!--**********************************
+      </div>
+      <!--**********************************
             Nav header end
         ***********************************-->
 
-
-<!--**********************************
+      <!--**********************************
             Sidebar Fixed
         ***********************************-->
-		<div class="fixed-content-box">
-			<div class="head-name">
-				MotaAdmin
-				<span class="close-fixed-content fa-left d-lg-none">
-					<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><polygon points="0 0 24 0 24 24 0 24"/><rect fill="#000000" opacity="0.3" transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) " x="14" y="7" width="2" height="10" rx="1"/><path d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z" fill="#000000" fill-rule="nonzero" transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) "/></g></svg>
-				</span>
-			</div>
-			<div class="fixed-content-body dz-scroll" id="DZ_W_Fixed_Contant">
-				<div class="tab-content" id="menu">
-					<div class="tab-pane chart-sidebar fade show active" id="dashboard-area" role="tabpanel"></div>
-					
-				
-					<div class="tab-pane fade" id="table">
-						<ul class="metismenu tab-nav-menu">
-							<li class="nav-label">Table</li>
-							
-							<li><a href="#">
-								<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><rect x="0" y="0" width="24" height="24"/><path d="M3,4 L20,4 C20.5522847,4 21,4.44771525 21,5 L21,7 C21,7.55228475 20.5522847,8 20,8 L3,8 C2.44771525,8 2,7.55228475 2,7 L2,5 C2,4.44771525 2.44771525,4 3,4 Z M10,10 L20,10 C20.5522847,10 21,10.4477153 21,11 L21,13 C21,13.5522847 20.5522847,14 20,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L20,16 C20.5522847,16 21,16.4477153 21,17 L21,19 C21,19.5522847 20.5522847,20 20,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z" fill="#000000"/><rect fill="#000000" opacity="0.3" x="2" y="10" width="5" height="10" rx="1"/></g></svg>
-								Datatable</a>
-							</li>
-						</ul>
-					</div>
-				
-				</div>
-			</div>
-		</div>
-		<!--**********************************
+      <div class="fixed-content-box">
+        <div class="head-name">
+          Jesco Admin
+          <span class="close-fixed-content fa-left d-lg-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              width="24px"
+              height="24px"
+              viewBox="0 0 24 24"
+              version="1.1"
+            ><g
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+              ><polygon points="0 0 24 0 24 24 0 24"></polygon><rect
+                  fill="#000000"
+                  opacity="0.3"
+                  transform="translate(15.000000, 12.000000) scale(-1, 1) rotate(-90.000000) translate(-15.000000, -12.000000) "
+                  x="14"
+                  y="7"
+                  width="2"
+                  height="10"
+                  rx="1"
+                ></rect><path
+                  d="M3.7071045,15.7071045 C3.3165802,16.0976288 2.68341522,16.0976288 2.29289093,15.7071045 C1.90236664,15.3165802 1.90236664,14.6834152 2.29289093,14.2928909 L8.29289093,8.29289093 C8.67146987,7.914312 9.28105631,7.90106637 9.67572234,8.26284357 L15.6757223,13.7628436 C16.0828413,14.136036 16.1103443,14.7686034 15.7371519,15.1757223 C15.3639594,15.5828413 14.7313921,15.6103443 14.3242731,15.2371519 L9.03007346,10.3841355 L3.7071045,15.7071045 Z"
+                  fill="#000000"
+                  fill-rule="nonzero"
+                  transform="translate(9.000001, 11.999997) scale(-1, -1) rotate(90.000000) translate(-9.000001, -11.999997) "
+                ></path></g></svg>
+          </span>
+        </div>
+        <div class="fixed-content-body dz-scroll" id="DZ_W_Fixed_Contant">
+          <div class="tab-content" id="menu">
+            <div
+              class="tab-pane chart-sidebar fade show active"
+              id="dashboard-area"
+              role="tabpanel"
+            ></div>
+
+            <div class="tab-pane fade" id="table">
+              <ul class="metismenu tab-nav-menu">
+                <li class="nav-label">Table</li>
+
+                <li><a href="/product">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      xmlns:xlink="http://www.w3.org/1999/xlink"
+                      width="24px"
+                      height="24px"
+                      viewBox="0 0 24 24"
+                      version="1.1"
+                    ><g
+                        stroke="none"
+                        stroke-width="1"
+                        fill="none"
+                        fill-rule="evenodd"
+                      ><rect x="0" y="0" width="24" height="24"></rect><path
+                          d="M3,4 L20,4 C20.5522847,4 21,4.44771525 21,5 L21,7 C21,7.55228475 20.5522847,8 20,8 L3,8 C2.44771525,8 2,7.55228475 2,7 L2,5 C2,4.44771525 2.44771525,4 3,4 Z M10,10 L20,10 C20.5522847,10 21,10.4477153 21,11 L21,13 C21,13.5522847 20.5522847,14 20,14 L10,14 C9.44771525,14 9,13.5522847 9,13 L9,11 C9,10.4477153 9.44771525,10 10,10 Z M10,16 L20,16 C20.5522847,16 21,16.4477153 21,17 L21,19 C21,19.5522847 20.5522847,20 20,20 L10,20 C9.44771525,20 9,19.5522847 9,19 L9,17 C9,16.4477153 9.44771525,16 10,16 Z"
+                          fill="#000000"
+                        ></path><rect
+                          fill="#000000"
+                          opacity="0.3"
+                          x="2"
+                          y="10"
+                          width="5"
+                          height="10"
+                          rx="1"
+                        ></rect></g></svg>
+                    Products</a>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </div>
+      <!--**********************************
             Sidebar End
         ***********************************-->
-		
-		
-        <!--**********************************
+
+      <!--**********************************
             Header start
         ***********************************-->
-        <div class="header">
-            <div class="header-content">
-                <nav class="navbar navbar-expand">
-                    <div class="collapse navbar-collapse justify-content-between">
-                        <div class="header-left">
-                       
-                        </div>
+      <div class="header">
+        <div class="header-content">
+          <nav class="navbar navbar-expand">
+            <div class="collapse navbar-collapse justify-content-between">
+              <div class="header-left">
 
-                        <ul class="navbar-nav header-right">
-							
-                            
-                            <li class="nav-item dropdown header-profile">
-                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                                    <img src="images/profile/pic1.jpg" width="20" alt=""/>
-									<div class="header-info">
-										<span>Hey, <strong>Joshua</strong></span>
-										<small>Business Profile</small>
-									</div>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right">
-                                    <a href="/profile" class="dropdown-item ai-icon">
-                                        <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                        <span class="ml-2">Profile </span>
-                                    </a>
-                              
-                                    <a href="/login" class="dropdown-item ai-icon">
-                                        <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
-                                        <span class="ml-2">Logout </span>
-                                    </a>
-                                </div>
-                            </li>
-							
-                        </ul>
+              </div>
+
+              <ul class="navbar-nav header-right">
+
+                <li class="nav-item dropdown header-profile">
+                  <a
+                    class="nav-link"
+                    href="#"
+                    role="button"
+                    data-toggle="dropdown"
+                  >
+                    <img src="images/profile/pic1.jpg" width="20" alt="" />
+                    <div class="header-info">
+                      <span>Hey, <strong>Joshua</strong></span>
+                      <small>Business Profile</small>
                     </div>
-                </nav>
+                  </a>
+                  <div class="dropdown-menu dropdown-menu-right">
+                    <a href="/profile" class="dropdown-item ai-icon">
+                      <svg
+                        id="icon-user1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="text-primary"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ><path
+                          d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                        ></path><circle cx="12" cy="7" r="4"></circle></svg>
+                      <span class="ml-2">Profile </span>
+                    </a>
+
+                    <a href="/login" class="dropdown-item ai-icon">
+                      <svg
+                        id="icon-logout"
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="text-danger"
+                        width="18"
+                        height="18"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ><path
+                          d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"
+                        ></path><polyline
+                          points="16 17 21 12 16 7"
+                        ></polyline><line
+                          x1="21"
+                          y1="12"
+                          x2="9"
+                          y2="12"
+                        ></line></svg>
+                      <span class="ml-2">Logout </span>
+                    </a>
+                  </div>
+                </li>
+
+              </ul>
             </div>
+          </nav>
         </div>
-        <!--**********************************
+      </div>
+      <!--**********************************
             Header end ti-comment-alt
         ***********************************-->
 
-        <!--**********************************
+      <!--**********************************
             Sidebar start
         ***********************************-->
-        <div class="deznav">
-            <div class="deznav-scroll">
-				<ul class="nav menu-tabs">
-					<li class="nav-item active">
-						<a class="nav-link" data-toggle="tab" href="#table">
-							<svg id="icon-table" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-server"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6" y2="6"></line><line x1="6" y1="18" x2="6" y2="18"></line></svg>
-						</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link" data-toggle="tab" href="#apps">
-							<svg id="icon-apps" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-						</a>
-					</li>					
-				</ul>
-			</div>
-			<a href="/login" class="logout-btn"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-log-out"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg></a>
+      <div class="deznav">
+        <div class="deznav-scroll">
+          <ul class="nav menu-tabs">
+            <li class="nav-item active">
+              <a class="nav-link" data-toggle="tab" href="#table">
+                <svg
+                  id="icon-table"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-server"
+                ><rect
+                    x="2"
+                    y="2"
+                    width="20"
+                    height="8"
+                    rx="2"
+                    ry="2"
+                  ></rect><rect
+                    x="2"
+                    y="14"
+                    width="20"
+                    height="8"
+                    rx="2"
+                    ry="2"
+                  ></rect><line x1="6" y1="6" x2="6" y2="6"></line><line
+                    x1="6"
+                    y1="18"
+                    x2="6"
+                    y2="18"
+                  ></line></svg>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#apps">
+                <svg
+                  id="icon-apps"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-users"
+                ><path
+                    d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"
+                  ></path><circle cx="9" cy="7" r="4"></circle><path
+                    d="M23 21v-2a4 4 0 0 0-3-3.87"
+                  ></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+              </a>
+            </li>
+          </ul>
         </div>
-        <!--**********************************
+        <a href="/login" class="logout-btn"><svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="feather feather-log-out"
+          ><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline
+              points="16 17 21 12 16 7"
+            ></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg></a>
+      </div>
+      <!--**********************************
             Sidebar end
         ***********************************-->
-		
-        <!--**********************************
+
+      <!--**********************************
             Content body start
         ***********************************-->
 
-       {{{body}}}
+      {{{body}}}
 
-
-        <!--**********************************
+      <!--**********************************
             Footer start
         ***********************************-->
-        <div class="footer">
-            <div class="copyright">
-                <p>Copyright © Designed &amp; Developed by <a href="http://dexignlab.com/" target="_blank">DexignLab</a> 2021</p>
-            </div>
+      <div class="footer">
+        <div class="copyright">
+          <p>Copyright © Designed &amp; Developed by
+            <a href="http://dexignlab.com/" target="_blank">DexignLab</a>
+            2021</p>
         </div>
-        <!--**********************************
+      </div>
+      <!--**********************************
             Footer end
         ***********************************-->
 
-      
-        
     </div>
     <!--**********************************
         Main wrapper end
@@ -194,25 +330,15 @@
     ***********************************-->
     <!-- Required vendors -->
     <script src="vendor/global/global.min.js"></script>
-	<script src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-    <script src="vendor/chart.js/Chart.bundle.min.js"></script>
+    <script
+      src="vendor/bootstrap-select/dist/js/bootstrap-select.min.js"
+    ></script>
+
     <script src="js/custom.min.js"></script>
-	<script src="js/deznav-init.js"></script>
-	<!-- Apex Chart -->
-	<script src="vendor/apexchart/apexchart.js"></script>
-    
+    <script src="js/deznav-init.js"></script>
+    <!-- Apex Chart -->
 
+  </body>
 
-    <!-- Datatable -->
-    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="js/plugins-init/datatables.init.js"></script>
-
-	<!-- Svganimation scripts -->
-<script src="vendor/svganimation/vivus.min.js"></script>
-    <script src="vendor/svganimation/svg.animation.js"></script>
-
-</body>
-
-
-<!-- Mirrored from motaadmin.dexignlab.com/xhtml/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Aug 2021 07:51:30 GMT -->
+  <!-- Mirrored from motaadmin.dexignlab.com/xhtml/table-datatable-basic.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 03 Aug 2021 07:51:30 GMT -->
 </html>
