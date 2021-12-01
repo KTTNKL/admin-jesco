@@ -28,10 +28,11 @@ exports.item = async function (req, res) {
   } catch (err) {}
   res.render("product_form", { product });
 };
-
+// add product
 exports.add = async function (req, res) {
   res.render("product_add_form");
 };
+// create product
 exports.create = async function (req, res) {
   const product = req.body;
   const images = req.body.imageString.replace(/\r\n/g, "\n").split("\n");
@@ -39,7 +40,7 @@ exports.create = async function (req, res) {
   await productService.create(product, images);
   res.render("product_add_form");
 };
-
+// update product
 exports.update = async function (req, res) {
   let product = req.body;
   const images = req.body.imageString.replace(/\r\n/g, "\n").split("\n");
@@ -48,7 +49,7 @@ exports.update = async function (req, res) {
 
   res.render("product_form", { product });
 };
-
+// delete product
 exports.delete = async function (req, res) {
   await productService.delete(req.params.id);
   res.redirect("/");
