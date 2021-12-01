@@ -11,8 +11,8 @@
               </div>
             </div>
           </div>
-          <button type="button" class="btn btn-danger">Remove <span class="btn-icon-right"><i
-                                            class="fa fa-close"></i></span>
+          <button type="button" class="btn btn-danger" onclick="location.href='/product/delete/{{product._id}}'">Remove <span class="btn-icon-right"><i
+                                            class="fa fa-close" ></i></span>
                                 </button>
           <div class="row">
             <div class="col-lg-12">
@@ -143,11 +143,13 @@
                 </div>
                 <div class="card-body">
                   <div class="basic-form">
-                    <form>
+                    
+                    <form action="/product/{{product._id}}" method="POST"  autocomplete="off">
+                    <input type="hidden" name="_id" value="{{product._id}}" />
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="name" value="{{product.name}}" />
+                          <input type="text" class="form-control" name="name" value="{{product.name}}" />
                         </div>
                       </div>
                       <div class="form-group row">
@@ -156,7 +158,7 @@
                           <input
                             type="number"
                             class="form-control"
-                            id="price"
+                            name="price"
                             value={{product.price}}
                           />
                         </div>
@@ -164,7 +166,7 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Availability</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="availability" value="{{product.availability}}" />
+                          <input type="text" class="form-control" name="availability" value="{{product.availability}}" />
                         </div>
                       </div>
                       <div class="form-group row">
@@ -173,7 +175,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="category"
+                            name="category"
                             value="{{product.category}}"
                           />
                         </div>
@@ -182,42 +184,42 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Brand</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="brand"  value="{{product.brand}}"/>
+                          <input type="text" class="form-control" name="brand"  value="{{product.brand}}"/>
                         </div>
                       </div>
                       
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Gender</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="gender" value="{{product.gender}}" />
+                          <input type="text" class="form-control" name="gender" value="{{product.gender}}" />
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Sale</label>
                         <div class="col-sm-10">
-                          <input type="number" class="form-control" id="sale" value={{product.sale}} />
+                          <input type="number" class="form-control" name="sale" value={{product.sale}} />
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Weight</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="weight"  value="{{product.weight}}"/>
+                          <input type="text" class="form-control" name="weight"  value="{{product.weight}}"/>
                         </div>
                       </div>
                       
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Dimension</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="gender" value="{{product.dimensions}}" />
+                          <input type="text" class="form-control" name="dimensions" value="{{product.dimensions}}" />
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Material</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="sale" value="{{product.materials}}" />
+                          <input type="text" class="form-control" name="materials" value="{{product.materials}}" />
                         </div>
                       </div>
 
@@ -227,7 +229,7 @@
                         <textarea
                           class="form-control"
                           rows="4"
-                          id="description"
+                          name="description"
                           
                         >{{product.description}}</textarea>
                       </div>
@@ -240,7 +242,7 @@
                         <textarea
                           class="form-control"
                           rows="4"
-                          id="image-link"
+                          name="image-link"
                         >{{product.image.[0]}} "\n"  {{product.image.[1]}} "\n" {{product.image.[2]}} "\n" {{product.image.[3]}}</textarea>
                       </div>
                       

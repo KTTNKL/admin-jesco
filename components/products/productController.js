@@ -24,6 +24,7 @@ exports.item = async function (req, res) {
   let product;
   try {
     product = await productService.viewOne(req.params.id);
+    product._id = (product._id).toString();
   } catch (err) {}
   res.render("product_form", { product });
 };
@@ -36,3 +37,16 @@ exports.create = async function (req, res) {
   await productService.create(product);
   res.render("product_add_form");
 };
+
+exports.update = async function (req, res){
+  const product = req.body;
+  await productService.update(product);
+  console.log(req.body._id);
+  res.render("product_form", {product});
+}
+
+exports.delete = async function (req, res){
+  console.log(req.params.id);
+  await productService.delete(req.params.id);
+  res.redirect("/");
+}

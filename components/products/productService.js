@@ -34,3 +34,20 @@ exports.create = (product) => {
     if (err) console.log(err);
   });
 };
+
+exports.update= (product) =>{
+  console.log(product);
+  Product.findOneAndUpdate({ _id: product._id }, product, { new: true }, (err, doc) => {
+      if (err) { console.log(err); }
+
+  });
+}
+
+exports.delete =(id)=>{
+  console.log(id);
+  Product.findByIdAndRemove(id, (err, doc) => {
+    if (err) console.log(err); 
+    
+});
+
+}
