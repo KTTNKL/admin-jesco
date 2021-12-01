@@ -32,5 +32,7 @@ exports.add = async function (req, res) {
   res.render("product_add_form");
 };
 exports.create = async function (req, res) {
- await productService.create();
+  const product = req.body;
+  await productService.create(product);
+  res.render("product_add_form");
 };

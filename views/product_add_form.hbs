@@ -15,11 +15,12 @@
                 </div>
                 <div class="card-body">
                   <div class="basic-form">
-                    <form>
+
+                    <form action="/product/add" method="POST"  autocomplete="off">
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Name</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="name"  />
+                          <input type="text" class="form-control" name="name"  />
                         </div>
                       </div>
                       <div class="form-group row">
@@ -28,7 +29,7 @@
                           <input
                             type="number"
                             class="form-control"
-                            id="price"
+                            name="price"
                             
                           />
                         </div>
@@ -36,7 +37,7 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Availability</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="availability" />
+                          <input type="text" class="form-control" name="availability" />
                         </div>
                       </div>
                       <div class="form-group row">
@@ -45,7 +46,7 @@
                           <input
                             type="text"
                             class="form-control"
-                            id="category"
+                            name="category"
                             
                           />
                         </div>
@@ -54,52 +55,58 @@
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Brand</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="brand"  />
+                          <input type="text" class="form-control" name="brand"  />
                         </div>
                       </div>
                       
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Gender</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="gender"  />
+                          <input type="text" class="form-control" name="gender"  />
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Sale</label>
                         <div class="col-sm-10">
-                          <input type="number" class="form-control" id="sale"  />
+                          <input type="number" class="form-control" name="sale"  />
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Weight</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="weight" />
+                          <input type="text" class="form-control" name="weight" />
                         </div>
                       </div>
                       
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Dimension</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="gender"  />
+                          <input type="text" class="form-control" name="dimensions"  />
                         </div>
                       </div>
 
                       <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Material</label>
                         <div class="col-sm-10">
-                          <input type="text" class="form-control" id="sale"  />
+                          <input type="text" class="form-control" name="materials"  />
                         </div>
                       </div>
 
+                      <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Gen</label>
+                        <div class="col-sm-10">
+                          <input type="text" class="form-control" name="gen"  />
+                        </div>
+                      </div>
 
                       <label class="col-sm-2 col-form-label">Description</label>
                       <div class="form-group">
                         <textarea
                           class="form-control"
                           rows="4"
-                          id="description"
+                          name="description"
                           
                         ></textarea>
                       </div>
@@ -112,7 +119,7 @@
                         <textarea
                           class="form-control"
                           rows="4"
-                          id="image-link"
+                          name="image-link"
                         ></textarea>
                       </div>
                       
@@ -125,7 +132,9 @@
                             value="Submit"
                           />
                         </div>
+
                       </div>
+
                     </form>
                   </div>
                 </div>
