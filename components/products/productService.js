@@ -11,7 +11,7 @@ exports.listProducts = (page) => {
 exports.totalProductNum = () => Product.countDocuments();
 exports.viewOne = (id) => Product.findById(id).lean();
 
-exports.create = (product) => {
+exports.create = (product, images) => {
   if (!product) {
     res.status(400).send({ message: "Content can not be empty!" });
     return;
@@ -30,24 +30,29 @@ exports.create = (product) => {
   newProduct.materials = product.materials;
   newProduct.gen = product.gen;
   newProduct.description = product.description;
+  newProduct.image = images;
   newProduct.save((err, doc) => {
     if (err) console.log(err);
   });
 };
 
-exports.update= (product) =>{
+exports.update = (product) => {
   console.log(product);
-  Product.findOneAndUpdate({ _id: product._id }, product, { new: true }, (err, doc) => {
-      if (err) { console.log(err); }
+  Product.findOneAndUpdate(
+    { _id: product._id },
+    product,
+    { new: true },
+    (err, doc) => {
+      if (err) {
+        console.log(err);
+      }
+    }
+  );
+};
 
-  });
-}
-
-exports.delete =(id)=>{
+exports.delete = (id) => {
   console.log(id);
   Product.findByIdAndRemove(id, (err, doc) => {
-    if (err) console.log(err); 
-    
-});
-
-}
+    if (err) console.log(err);
+  });
+};
