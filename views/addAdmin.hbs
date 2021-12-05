@@ -20,15 +20,16 @@
               <div class="row no-gutters">
                 <div class="col-xl-12">
                   <div class="auth-form">
-                    <h4 class="text-center mb-4">Sign up your account</h4>
+                    <h4 class="text-center mb-4">ADD NEW ADMIN WHO HAS SAME ROLE</h4>
                     <form
-                      action="https://motaadmin.dexignlab.com/xhtml/index.html"
+                      action="/add_addmin" method="post"
                     >
                       <div class="form-group">
                         <label class="mb-1"><strong>Username</strong></label>
                         <input
                           type="text"
                           class="form-control"
+                          name="username"
                           placeholder="username"
                         />
                       </div>
@@ -37,6 +38,7 @@
                         <input
                           type="email"
                           class="form-control"
+                          name="email"
                           placeholder="hello@example.com"
                         />
                       </div>
@@ -45,18 +47,19 @@
                         <input
                           type="password"
                           class="form-control"
+                          name="password"
                           value="Password"
                         />
                       </div>
                       <div class="text-center mt-4">
                         <button type="submit" class="btn btn-primary btn-block">
-                          Sign me up
+                          Create new admin
                         </button>
                       </div>
                     </form>
                     <div class="new-account mt-3">
                       <p>
-                        Already have an account?
+                        Back to login form
                         <a class="text-primary" href="/login"
                           >Sign in</a
                         >
