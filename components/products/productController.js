@@ -26,11 +26,11 @@ exports.item = async function (req, res) {
     product = await productService.viewOne(req.params.id);
     product._id = product._id.toString();
   } catch (err) {}
-  res.render("product_form", { product });
+  res.render("products/views/product_form", { product });
 };
 // add product
 exports.add = async function (req, res) {
-  res.render("product_add_form");
+  res.render("products/views/product_add_form");
 };
 // create product
 exports.create = async function (req, res) {
@@ -38,7 +38,7 @@ exports.create = async function (req, res) {
   const images = req.body.imageString.replace(/\r\n/g, "\n").split("\n");
 
   await productService.create(product, images);
-  res.render("product_add_form");
+  res.render("products/views/product_add_form");
 };
 // update product
 exports.update = async function (req, res) {
@@ -47,7 +47,7 @@ exports.update = async function (req, res) {
   product.image = images;
   await productService.update(product);
 
-  res.render("product_form", { product });
+  res.render("products/views/product_form", { product });
 };
 // delete product
 exports.delete = async function (req, res) {
