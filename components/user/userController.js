@@ -13,7 +13,7 @@ exports.list = async function (req, res) {
   let totalPage = await userService.totalUserNum();
   totalPage = Math.ceil(totalPage / 4);
   //const users = await userService.listUsers();
-  res.render("userList", {
+  res.render("user/views/userList", {
     page: page, // Current Page
     totalPage, // Total Page
     users: users
@@ -28,5 +28,5 @@ exports.item = async function (req, res) {
     console.log(user);
     user._id = user._id.toString();
   } catch (err) {}
-  res.render("profile", { user });
+  res.render("user/views/profile", { user });
 };

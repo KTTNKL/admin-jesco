@@ -37,7 +37,7 @@ app.use(function (req, res, next) {
 });
 
 app.use("/", authRouter);
-app.use("/userList", userListRouter);
+app.use("/userList", loggedInUserGuard, userListRouter);
 app.use("/profile", loggedInUserGuard, profileRouter);
 
 app.use("/userList", express.static(path.join(__dirname, "public")));
