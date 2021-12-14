@@ -22,7 +22,7 @@
                 <tbody>
                   {{#each users}}
                     <tr>
-                      <td>{{this._id}}</td>
+                      <td><a href="/userList/{{this._id}}">{{this._id}}</a></td>
                       <td>{{this.username}}</td>
                     </tr>
                   {{/each}}

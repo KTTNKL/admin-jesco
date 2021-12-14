@@ -44830,3 +44830,7 @@ html[dir="rtl"]
 .table-responsive tr:nth-child(even) {
   background-color: #dddddd;
 }
+ol li {
+  background: #cce5ff;
+  margin: 5px;
+}

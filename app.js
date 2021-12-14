@@ -40,7 +40,7 @@ app.use("/", authRouter);
 app.use("/userList", userListRouter);
 app.use("/profile", loggedInUserGuard, profileRouter);
 
-
+app.use("/userList", express.static(path.join(__dirname, "public")));
 app.use("/product", express.static(path.join(__dirname, "public")));
 
 app.use("/product", loggedInUserGuard, indexRouter);

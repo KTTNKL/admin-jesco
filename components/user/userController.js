@@ -21,10 +21,12 @@ exports.list = async function (req, res) {
 };
 
 exports.item = async function (req, res) {
-  let product;
+  let user;
+
   try {
-    product = await userService.viewOne(req.params.id);
-    product._id = product._id.toString();
+    user = await userService.viewOne(req.params.id);
+    console.log(user);
+    user._id = user._id.toString();
   } catch (err) {}
-  res.render("products/views/product_form", { product });
+  res.render("profile", { user });
 };
