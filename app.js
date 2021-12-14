@@ -7,7 +7,7 @@ const session = require("express-session");
 const indexRouter = require("./components/products");
 
 const profileRouter = require("./routes/profile");
-
+const adminsRouter = require("./components/admins")
 const passport = require("./passport");
 const authRouter = require("./components/auth");
 const loggedInUserGuard = require("./middlewares/loggedInUserGuard");
@@ -38,6 +38,10 @@ app.use(function (req, res, next) {
 app.use("/", authRouter);
 
 app.use("/profile", loggedInUserGuard, profileRouter);
+app.use("/admins", express.static(path.join(__dirname, "public")));
+
+app.use("/admins", loggedInUserGuard, adminsRouter);
+
 
 app.use("/product", express.static(path.join(__dirname, "public")));
 

@@ -17,5 +17,5 @@ router.get("/logout", authController.logout);
 //router.get('/register',authController.register);
 router.get("/add_addmin", authController.addAdmin);
 router.post("/add_addmin", authController.getAddAdmin);
-router.get("/admins", authController.getAdminList);
+
 module.exports = router;
