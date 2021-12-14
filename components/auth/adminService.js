@@ -21,6 +21,6 @@ exports.addNewAdmin = async (username, email, password) => {
   });
 };
 
-exports.listAdmins = () => {
-  return adminModel.find({}).lean();
-};
+// exports.listAdmins = () => {
+//   return adminModel.find({}).lean();
+// };

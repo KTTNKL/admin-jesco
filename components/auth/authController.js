@@ -17,8 +17,8 @@ exports.getAddAdmin = async (req, res) => {
   res.redirect("auth/views/login");
 };
 
-exports.getAdminList = async (req, res) => {
-  const admins = await adminService.listAdmins();
-  console.log(admins);
-  res.render("auth/views/adminList", { admins });
-};
+// exports.getAdminList = async (req, res) => {
+//   const admins = await adminService.listAdmins();
+//   console.log(admins);
+//   res.render("auth/views/adminList", { admins });
+// };
