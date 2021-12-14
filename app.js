@@ -7,7 +7,7 @@ const session = require("express-session");
 const indexRouter = require("./components/products");
 
 const profileRouter = require("./routes/profile");
-const userListRouter = require("./routes/userList");
+const userListRouter = require("./components/user");
 
 const passport = require("./passport");
 const authRouter = require("./components/auth");
@@ -37,7 +37,7 @@ app.use(function (req, res, next) {
 });
 
 app.use("/", authRouter);
-app.use("/adminList", userListRouter);
+app.use("/userList", userListRouter);
 app.use("/profile", loggedInUserGuard, profileRouter);
 
 

@@ -44807,3 +44807,26 @@ html[dir="rtl"]
 .linkProduct:hover {
   cursor: pointer;
 }
+
+/* .table-responsive table, td, th{
+  border: 1px solid black;
+}
+.table-responsive table{
+  border-collapse: collapse;
+} */
+
+.table-responsive table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table-responsive td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+.table-responsive tr:nth-child(even) {
+  background-color: #dddddd;
+}
