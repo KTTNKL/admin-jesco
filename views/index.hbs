@@ -73,27 +73,53 @@
             Content body end
         ***********************************-->
 <script type="text/javascript">
-
-  const element = document.querySelector(".pagination ul"); let totalPages =
-  {{totalPage}}; let page =
-  {{page}}; element.innerHTML = createPagination(totalPages, page); function
-  createPagination(totalPages, page){ let liTag = ''; let active; let beforePage
-  = page - 1; let afterPage = page + 1; if(page > 1){ liTag += `<li class="btn
-  prev" onclick="location.href='/product?page=${page -
-  1}'"><span>Prev</span></li>`; } if(page > 2){ liTag += `<li class="first numb"
-  onclick="location.href='/product?page=1'"><span>1</span></li>`; if(page > 3){
-  liTag += `<li class="dots"><span>...</span></li>`; } } if (page == totalPages)
-  { beforePage = beforePage - 2; } else if (page == totalPages - 1) { beforePage
-  = beforePage - 1; } if (page == 1) { afterPage = afterPage + 2; } else if
-  (page == 2) { afterPage = afterPage + 1; } for (var plength = beforePage;
-  plength <= afterPage; plength++) { if (plength > totalPages) { continue; } if
-  (plength == 0) { plength = plength + 1; } if(page == plength){ active =
-  "active"; }else{ active = ""; } liTag += `<li class="numb ${active}"
-  onclick="location.href='/product?page=${plength}'"><span>${plength}</span></li>`;
-  } if(page < totalPages - 1){ if(page < totalPages - 2){ liTag += `<li
-  class="dots"><span>...</span></li>`; } liTag += `<li class="last numb"
-  onclick="location.href='/product?page=${totalPages}'"><span>${totalPages}</span></li>`;
-  } if (page < totalPages) { liTag += `<li class="btn next"
-  onclick="location.href='/product?page=${page + 1}'"><span>Next</span></li>`; }
+  const element = document.querySelector(".pagination ul"); 
+  let totalPages = {{totalPage}}; 
+  let page = {{page}}; 
+  element.innerHTML = createPagination(totalPages, page); 
+  function createPagination(totalPages, page){ 
+    let liTag = ''; 
+    let active; 
+    let beforePage = page - 1; 
+    let afterPage = page + 1; 
+    if(page > 1){ liTag += `<li class="btn prev" onclick="location.href='/product?page=${page - 1}'"><span>Prev</span></li>`; } 
+    if(page > 2){ liTag += `<li class="first numb" onclick="location.href='/product?page=1'"><span>1</span></li>`; 
+      if(page > 3){
+        liTag += `<li class="dots"><span>...</span></li>`; 
+      } 
+    } 
+    if (page == totalPages){ 
+      beforePage = beforePage - 2; 
+    } else if (page == totalPages - 1) { 
+      beforePage = beforePage - 1; 
+    } 
+    if (page == 1) { 
+      afterPage = afterPage + 2; 
+    } else if (page == 2) { 
+      afterPage = afterPage + 1; 
+    } 
+    for (var plength = beforePage; plength <= afterPage; plength++) { 
+      if (plength > totalPages) { 
+        continue; 
+      } 
+      if (plength == 0) { 
+        plength = plength + 1; 
+      } 
+      if(page == plength){ 
+        active = "active"; 
+      }else{ 
+        active = ""; 
+      } 
+      liTag += `<li class="numb ${active}" onclick="location.href='/product?page=${plength}'"><span>${plength}</span></li>`;
+    } 
+   if(page < totalPages - 1){ 
+    if(page < totalPages - 2){ 
+      liTag += `<li class="dots"><span>...</span></li>`; 
+    } 
+    liTag += `<li class="last numb" onclick="location.href='/product?page=${totalPages}'"><span>${totalPages}</span></li>`;
+  } 
+  if (page < totalPages) { 
+    liTag += `<li class="btn next" onclick="location.href='/product?page=${page + 1}'"><span>Next</span></li>`; 
+  }
   element.innerHTML = liTag; return liTag; }
 </script>
