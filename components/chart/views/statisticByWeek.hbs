@@ -1,0 +1,52 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+<div id="chartContent">
+    <canvas id="myChart"></canvas>
+</div>
+<script>
+var xValues = [];
+{{#each Xaxist}}
+var fday = {{fday}};
+var lday = {{lday}};
+var fmonth = {{fmonth}};
+var lmonth = {{lmonth}};
+  xValues.push(fday.toString() + "/" + fmonth.toString() + "-" + lday.toString() + "/" + lmonth.toString());
+{{/each}}
+var yValues =[{{statisticByWeek}}];
+var barColors = ["red", "green","blue","orange"];
+
+new Chart("myChart", {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    legend: {
+        display: false,
+    },
+    title: {
+      display: true,
+      text: "The Last 4 Weeks Bills",
+      fontSize: 30,
+      fontColor: "red"
+    },
+    scales: {
+        yAxes: [{
+            ticks: {
+                fontSize: 15,
+                suggestedMin: 0
+            }
+        }],
+        xAxes: [{
+            ticks: {
+                fontSize: 15
+            }
+        }]
+    }
+  }
+});
+</script>
