@@ -4,9 +4,14 @@
     <canvas id="myChart"></canvas>
 </div>
 <script>
-var xValues = ["Italy", "France", "Spain", "USA", "Argentina"];
-var yValues = [55, 49, 44, 24, 24];
-var barColors = ["red", "green","blue","orange", "white"];
+var xValues = [];
+{{#each Xaxist}}
+var day = {{day}};
+var month = {{month}};
+  xValues.push(day.toString() + "/" + month.toString());
+{{/each}}
+var yValues =[{{statisticByDay}}];
+var barColors = ["red", "green","blue","orange", "white","pink","black"];
 
 new Chart("myChart", {
   type: "bar",
@@ -23,7 +28,7 @@ new Chart("myChart", {
     },
     title: {
       display: true,
-      text: "World Wine Production 2018",
+      text: "The Last 7 Days Bills",
       fontSize: 30,
       fontColor: "red"
     },
@@ -31,8 +36,7 @@ new Chart("myChart", {
         yAxes: [{
             ticks: {
                 fontSize: 15,
-                suggestedMin: 0,
-                suggestedMax: 100
+                suggestedMin: 0
             }
         }],
         xAxes: [{
