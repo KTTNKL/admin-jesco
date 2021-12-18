@@ -1,6 +1,6 @@
 <div class="content-body">
   <div class="container-fluid">
-    
+
     <!-- row -->
 
     <div class="row">
@@ -16,15 +16,36 @@
                   <tr>
                     <th>ID</th>
                     <th>Name</th>
+                    <th>Status</th>
+                    <th>Change Status</th>
 
                   </tr>
                 </thead>
                 <tbody>
                   {{#each users}}
-                    <tr>
-                      <td><a href="/userList/{{this._id}}">{{this._id}}</a></td>
-                      <td>{{this.username}}</td>
-                    </tr>
+                  <tr>
+                    <td><a href="/userList/{{this._id}}">{{this._id}}</a></td>
+                    <td><a href="/userList/{{this._id}}">{{this.username}}</a></td>
+                    <td>
+                      {{#if isBan}}
+                      Banned
+                      {{else}}
+                      Normal
+                      {{/if}}
+                    </td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuIconButton1"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Change status
+
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
+                          <a class="dropdown-item" href="/userList/ban/{{_id}}">Ban</a>
+                          <a class="dropdown-item" href="/userList/unban/{{_id}}">Unban</a>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
                   {{/each}}
                 </tbody>
 
@@ -45,75 +66,73 @@
 
 <script type="text/javascript">
 
-  const element = document.querySelector(".pagination ul"); 
-  let totalPages = {{totalPage}}; 
-  let page = {{page}}; 
-  element.innerHTML = createPagination(totalPages, page); 
-  function createPagination(totalPages, page){ 
-    let liTag = ''; 
-    let active; 
-    let beforePage = page - 1; 
+  const element = document.querySelector(".pagination ul");
+  let totalPages = {{ totalPage }};
+  let page = {{ page }};
+  element.innerHTML = createPagination(totalPages, page);
+  function createPagination(totalPages, page) {
+    let liTag = '';
+    let active;
+    let beforePage = page - 1;
     let afterPage = page + 1;
     let begin = false;
     let end = false;
 
-    if(page > 1){ 
-      liTag += `<li class="btn prev" onclick="location.href='/userList?page=${page - 1}'"><span>Prev</span></li>`; 
-    } 
-    if(page > 2){ 
-      liTag += `<li class="first numb" onclick="location.href='/userList?page=1'"><span>1</span></li>`; 
+    if (page > 1) {
+      liTag += `<li class="btn prev" onclick="location.href='/userList?page=${page - 1}'"><span>Prev</span></li>`;
+    }
+    if (page > 2) {
+      liTag += `<li class="first numb" onclick="location.href='/userList?page=1'"><span>1</span></li>`;
       begin = true;
-      if(page > 3){ 
-        liTag += `<li class="dots"><span>...</span></li>`; 
+      if (page > 3) {
+        liTag += `<li class="dots"><span>...</span></li>`;
       }
-    } 
-    if (page == totalPages){ 
-      beforePage = beforePage - 2; 
-    } else if (page == totalPages - 1) { 
-      beforePage = beforePage - 1; 
-    } 
-    if (page == 1) { 
-      afterPage = afterPage + 2; 
-    } else if (page == 2) { 
-      afterPage = afterPage + 1; 
-    } 
-    for (var plength = beforePage; plength <= afterPage; plength++ ) { 
-      if (plength > totalPages) { 
-        continue; 
-      } 
-      if (plength == 0) { 
-        plength = plength + 1; 
-      } 
-      if(page == plength){ 
-        active = "active"; 
-      }else{ 
-        active = ""; 
-      } 
-      
-      if(plength == 1 && begin == false){
+    }
+    if (page == totalPages) {
+      beforePage = beforePage - 2;
+    } else if (page == totalPages - 1) {
+      beforePage = beforePage - 1;
+    }
+    if (page == 1) {
+      afterPage = afterPage + 2;
+    } else if (page == 2) {
+      afterPage = afterPage + 1;
+    }
+    for (var plength = beforePage; plength <= afterPage; plength++) {
+      if (plength > totalPages) {
+        continue;
+      }
+      if (plength == 0) {
+        plength = plength + 1;
+      }
+      if (page == plength) {
+        active = "active";
+      } else {
+        active = "";
+      }
+
+      if (plength == 1 && begin == false) {
         liTag += `<li class="numb ${active}" onclick="location.href='/userList?page=${plength}'"><span>${plength}</span></li>`;
-        
+
       }
-      else if(plength == totalPages && end == false){
+      else if (plength == totalPages && end == false) {
         liTag += `<li class="numb ${active}" onclick="location.href='/userList?page=${plength}'"><span>${plength}</span></li>`;
         end = true;
       }
-      else if(plength!= 1 && plength != totalPages){
+      else if (plength != 1 && plength != totalPages) {
         liTag += `<li class="numb ${active}" onclick="location.href='/userList?page=${plength}'"><span>${plength}</span></li>`;
       }
-    } 
-    if(page < totalPages - 1){ 
-      if(page < totalPages - 2){ 
-        liTag += `<li class="dots"><span>...</span></li>`; 
-      }
-      if(end == false)
-        liTag += `<li class="last numb" onclick="location.href='/userList?page=${totalPages}'"><span>${totalPages}</span></li>`;
-    } 
-    if (page < totalPages) { 
-      liTag += `<li class="btn next" onclick="location.href='/userList?page=${page + 1}'"><span>Next</span></li>`; 
     }
-    element.innerHTML = liTag; return liTag; 
+    if (page < totalPages - 1) {
+      if (page < totalPages - 2) {
+        liTag += `<li class="dots"><span>...</span></li>`;
+      }
+      if (end == false)
+        liTag += `<li class="last numb" onclick="location.href='/userList?page=${totalPages}'"><span>${totalPages}</span></li>`;
+    }
+    if (page < totalPages) {
+      liTag += `<li class="btn next" onclick="location.href='/userList?page=${page + 1}'"><span>Next</span></li>`;
+    }
+    element.innerHTML = liTag; return liTag;
   }
 </script> --}}
-
-

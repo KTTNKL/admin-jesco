@@ -13,6 +13,7 @@ exports.list = async function (req, res) {
   let totalPage = await userService.totalUserNum();
   totalPage = Math.ceil(totalPage / 4);
   //const users = await userService.listUsers();
+  
   res.render("user/views/userList", {
     page: page, // Current Page
     totalPage, // Total Page
@@ -30,3 +31,15 @@ exports.item = async function (req, res) {
   } catch (err) {}
   res.render("user/views/profile", { user });
 };
+
+exports.ban = async function (req, res){
+  const userID = req.params.id;
+  const result = await userService.banUser(userID);
+  res.redirect(req.get('referer'));
+}
+
+exports.unban = async function (req, res){
+  const userID = req.params.id;
+  const result = await userService.unbanUser(userID);
+  res.redirect(req.get('referer'));
+}

@@ -18,3 +18,17 @@ exports.listUsers = async (page) => {
 //exports.listUsers = () => User.find().lean()
 exports.totalUserNum = () => User.countDocuments();
 exports.viewOne = (id) => User.findById(id).lean();
+
+exports.banUser = async (userID) =>{
+  console.log("bannnn");
+  const result = await User.updateOne({ _id: userID },
+      { $set: {isBan: Boolean(true)}});
+  return result;
+}
+
+exports.unbanUser = async (userID) =>{
+  console.log("unbannnnnn");
+  const result = await User.updateOne({ _id: userID },
+      { $set: {isBan: Boolean(false)}});
+  return result;
+}
