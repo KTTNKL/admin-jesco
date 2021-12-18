@@ -97,3 +97,32 @@ exports.statisticByWeek = async function (req, res) {
   console.log(statisticByWeek);
   res.render("chart/views/statisticByWeek", {Xaxist: week, statisticByWeek: statisticByWeek});
 };
+
+
+exports.statisticByMonth = async function (req, res) {
+  const order = await chartService.listOrder();
+  const statisticByMonth = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  let curr = new Date;
+  let year = curr.getYear();
+  
+  for (let i = 0; i < order.length; i++) {
+
+    let date = new Date(order[i].DateOfPurchase);
+
+   if(date.getMonth() === 0 && date.getYear() === year) statisticByMonth[0]++;
+   else if(date.getMonth() === 1 && date.getYear() === year) statisticByMonth[1]++;
+   else if(date.getMonth() === 2 && date.getYear() === year) statisticByMonth[2]++;
+   else if(date.getMonth() === 3 && date.getYear() === year) statisticByMonth[3]++;
+   else if(date.getMonth() === 4 && date.getYear() === year) statisticByMonth[4]++;
+   else if(date.getMonth() === 5 && date.getYear() === year) statisticByMonth[5]++;
+   else if(date.getMonth() === 6 && date.getYear() === year) statisticByMonth[6]++;
+   else if(date.getMonth() === 7 && date.getYear() === year) statisticByMonth[7]++;
+   else if(date.getMonth() === 8 && date.getYear() === year) statisticByMonth[8]++;
+   else if(date.getMonth() === 9 && date.getYear() === year) statisticByMonth[9]++;
+   else if(date.getMonth() === 10 && date.getYear() === year) statisticByMonth[10]++;
+   else if(date.getMonth() === 11 && date.getYear() === year) statisticByMonth[11]++;
+   
+  }
+  
+  res.render("chart/views/statisticByMonth", {statisticByMonth: statisticByMonth});
+};
