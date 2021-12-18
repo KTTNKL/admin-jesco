@@ -318,6 +318,7 @@ body {
   color: #89879f;
   text-align: left;
   background-color: #ebeef6;
+  background-image: url("https://mondaycareer.com/wp-content/uploads/2020/11/background-%C4%91%E1%BA%B9p-3-1024x682.jpg");
 }
 
 [tabindex="-1"]:focus {
@@ -44833,4 +44834,25 @@ html[dir="rtl"]
 ol li {
   background: #cce5ff;
   margin: 5px;
+}
+
+#DZ_W_Fixed_Contant{
+  background-color: pink;
+}
+#chartContent{
+  height: 100%;
+}
+canvas{
+  width:100%;
+  max-width:1000px;
+  position:relative; 
+  left:30em;
+  top: 10em;
+  
+  color: red;
+  background-color: black;
+}
+
+.header-content{
+  background-color: pink;
 }

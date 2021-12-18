@@ -9,6 +9,9 @@ const indexRouter = require("./components/products");
 const profileRouter = require("./routes/profile");
 const userListRouter = require("./components/user");
 
+const statisticRouter = require("./components/chart");
+
+
 const passport = require("./passport");
 const authRouter = require("./components/auth");
 const loggedInUserGuard = require("./middlewares/loggedInUserGuard");
@@ -37,11 +40,13 @@ app.use(function (req, res, next) {
 });
 
 app.use("/", authRouter);
+app.use("/statistic", loggedInUserGuard, statisticRouter);
 app.use("/userList", loggedInUserGuard, userListRouter);
 app.use("/profile", loggedInUserGuard, profileRouter);
 
 app.use("/userList", express.static(path.join(__dirname, "public")));
 app.use("/product", express.static(path.join(__dirname, "public")));
+app.use("/statistic", express.static(path.join(__dirname, "public")));
 
 app.use("/product", loggedInUserGuard, indexRouter);
 

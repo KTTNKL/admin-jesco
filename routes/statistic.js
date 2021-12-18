@@ -3,8 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log("admindddd")
-  res.render('profileAdmin');
+  res.render('statistic');
 });
 
 module.exports = router;
