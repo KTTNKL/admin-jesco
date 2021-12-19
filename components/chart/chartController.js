@@ -1,6 +1,7 @@
 
 const chartService = require("./chartService");
 
+
 exports.statisticByDay = async function (req, res) {
   const order = await chartService.listOrder();
   const statisticByDay = [0, 0, 0, 0, 0, 0, 0];
@@ -235,3 +236,27 @@ exports.orderDetail = async function (req, res) {
   } catch (err) {}
   res.render("chart/views/orderDetail", { order });
 };
+
+exports.topProducts = async function (req, res) {
+  const products = await chartService.listProducts();
+  for(let i = 0 ; i < products.length;i++){
+    if(products[i].saleNumber === undefined){
+      products.splice(i,1);
+      i = i - 1;
+    } 
+  }
+  for(let i = 0 ; i < products.length - 1; i++){
+    for(let j = i + 1; j < products.length;j++){
+      if(products[i].saleNumber < products[j].saleNumber) {
+        let temp = products[i];
+        products[i] = products[j];
+        products[j] = temp;
+      }
+    }
+  }
+  let top10 = []
+  for(let i = 0 ; i < 10;i++){
+    top10.push(products[i]);
+  }
+  res.render("chart/views/top10Products",{top10: top10});
+}

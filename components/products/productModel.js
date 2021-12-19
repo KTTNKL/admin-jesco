@@ -27,6 +27,7 @@ const productSchema = new mongoose.Schema({
     default: [],
   },
   gen: String,
+  saleNumber: Number
 });
 const product = mongoose.model("Product", productSchema);
 
