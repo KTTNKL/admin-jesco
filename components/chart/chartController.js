@@ -54,29 +54,33 @@ exports.statisticByWeek = async function (req, res) {
   const statisticByWeek = [0, 0, 0, 0];
 
   var curr = new Date;
-  curr.setHours(0,1,0,0);
   var firstdayWeek4 = new Date(curr.setDate(curr.getDate() - curr.getDay()));
   var lastdayWeek4 = new Date(curr.setDate(curr.getDate() - curr.getDay()+6));
 
-
   curr = new Date(curr);
   curr.setDate(curr.getDate() - 7)
-  curr.setHours(0,1,0,0);
   var firstdayWeek3 = new Date(curr.setDate(curr.getDate() - curr.getDay()));
   var lastdayWeek3 = new Date(curr.setDate(curr.getDate() - curr.getDay()+6));
 
   curr = new Date(curr);
   curr.setDate(curr.getDate() - 7)
-  curr.setHours(0,1,0,0);
   var firstdayWeek2 = new Date(curr.setDate(curr.getDate() - curr.getDay()));
   var lastdayWeek2 = new Date(curr.setDate(curr.getDate() - curr.getDay()+6));
 
   curr = new Date(curr);
   curr.setDate(curr.getDate() - 7)
-  curr.setHours(0,1,0,0);
   var firstdayWeek1 = new Date(curr.setDate(curr.getDate() - curr.getDay()));
   var lastdayWeek1 = new Date(curr.setDate(curr.getDate() - curr.getDay()+6));
 
+  firstdayWeek1.setHours(7,1)
+  firstdayWeek2.setHours(7,1)
+  firstdayWeek3.setHours(7,1)
+  firstdayWeek4.setHours(7,1)
+
+  lastdayWeek1.setHours(30,59)
+  lastdayWeek2.setHours(30,59)
+  lastdayWeek3.setHours(30,59)
+  lastdayWeek4.setHours(30,59)
   let week = [
     {fday: firstdayWeek1.getDate(), fmonth: firstdayWeek1.getMonth() + 1, lday: lastdayWeek1.getDate(), lmonth: lastdayWeek1.getMonth() + 1},
     {fday: firstdayWeek2.getDate(), fmonth: firstdayWeek2.getMonth() + 1, lday: lastdayWeek2.getDate(), lmonth: lastdayWeek2.getMonth() + 1},
@@ -87,9 +91,11 @@ exports.statisticByWeek = async function (req, res) {
   for (let i = 0; i < order.length; i++) {
 
     let date = new Date(order[i].DateOfPurchase);
-    date.setHours(0,1,0,0);
+    //date.setHours(0,1,1);
+    console.log(date)
+    console.log(date.getTime())
     if((date.getTime() >= firstdayWeek1.getTime() && date.getTime() <= lastdayWeek1.getTime()))
-      statisticByWeek[0]++;
+      {statisticByWeek[0]++;console.log(date)}
     else if((date.getTime() >= firstdayWeek2.getTime() && date.getTime() <= lastdayWeek2.getTime()))
       statisticByWeek[1]++;
     else if((date.getTime() >= firstdayWeek3.getTime() && date.getTime() <= lastdayWeek3.getTime()))
@@ -98,7 +104,6 @@ exports.statisticByWeek = async function (req, res) {
       statisticByWeek[3]++;
   }
 
-  
   res.render("chart/views/statisticByWeek", {Xaxist: week, statisticByWeek: statisticByWeek});
 };
 
@@ -150,3 +155,72 @@ exports.statisticByYear = async function (req, res) {
   
   res.render("chart/views/statisticByYear", {year: year, statisticByYear: statisticByYear});
 };
+
+
+exports.statisticByQuarter = async function (req, res) {
+  const order = await chartService.listOrder();
+  const statisticByQuarter = [0, 0, 0, 0];
+
+  var curr = new Date;
+  let year = curr.getYear();
+  let firstQuarter1 = new Date(year - 100 + 2000, 0, 1)
+  let lastQuarter1 = new Date(year - 100 + 2000, 2, 31)
+
+  let firstQuarter2 = new Date(year - 100 + 2000, 3, 1)
+  let lastQuarter2 = new Date(year - 100 + 2000, 5, 30)
+
+
+  let firstQuarter3 = new Date(year - 100 + 2000, 6, 1)
+  let lastQuarter3 = new Date(year - 100 + 2000, 8, 30)
+
+  let firstQuarter4 = new Date(year - 100 + 2000, 9, 1)
+  let lastQuarter4 = new Date(year - 100 + 2000, 11, 31)
+
+
+  firstQuarter1.setHours(7,1)
+  firstQuarter2.setHours(7,1)
+  firstQuarter3.setHours(7,1)
+  firstQuarter4.setHours(7,1)
+
+  lastQuarter1.setHours(30,59)
+  lastQuarter2.setHours(30,59)
+  lastQuarter3.setHours(30,59)
+  lastQuarter4.setHours(30,59)
+
+  for (let i = 0; i < order.length; i++) {
+
+    let date = new Date(order[i].DateOfPurchase);
+    if((date.getTime() >= firstQuarter1.getTime() && date.getTime() <= lastQuarter1.getTime()))
+      statisticByQuarter[0]++;
+    else if((date.getTime() >= firstQuarter2.getTime() && date.getTime() <= lastQuarter2.getTime()))
+    statisticByQuarter[1]++;
+    else if((date.getTime() >= firstQuarter3.getTime() && date.getTime() <= lastQuarter3.getTime()))
+    statisticByQuarter[2]++;
+    else if((date.getTime() >= firstQuarter4.getTime() && date.getTime() <= lastQuarter4.getTime()))
+    statisticByQuarter[3]++;
+  }
+
+  
+  res.render("chart/views/statisticByQuarter", {statisticByQuarter: statisticByQuarter});
+};
+
+exports.order = async function (req, res) {
+  let page;
+  if (req.query.page === undefined) {
+    page = 1;
+  } else if (req.query.page < 0) {
+    page = 1;
+  } else {
+    page = parseInt(req.query.page);
+  }
+  const bills = await chartService.listBill(page);
+  let totalPage = await chartService.totalBillNum();
+  totalPage = Math.ceil(totalPage / 4);
+  
+  res.render("chart/views/bill", {
+    page: page, // Current Page
+    totalPage, // Total Page
+    bills: bills
+  });
+};
+

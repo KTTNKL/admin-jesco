@@ -1,0 +1,120 @@
+<div class="content-body">
+  <div class="container-fluid">
+
+    <!-- row -->
+
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Admin List</h4>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table id="example" class="display" style="min-width: 845px">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each bills}}
+                  <tr>
+                    <td><a href="/statistic/order/{{this._id}}">{{this._id}}</a></td>
+                    <td><a href="/statistic/order/{{this._id}}">{{this.username}}</a></td>
+                    <td>
+                      {{this.status}}
+                    </td>
+                  </tr>
+                  {{/each}}
+                </tbody>
+
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pagination">
+    <ul>
+      <!--pages or li are comes from javascript -->
+    </ul>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+
+  const element = document.querySelector(".pagination ul");
+  let totalPages = {{ totalPage }};
+  let page = {{ page }};
+  element.innerHTML = createPagination(totalPages, page);
+  function createPagination(totalPages, page) {
+    let liTag = '';
+    let active;
+    let beforePage = page - 1;
+    let afterPage = page + 1;
+    let begin = false;
+    let end = false;
+
+    if (page > 1) {
+      liTag += `<li class="btn prev" onclick="location.href='/statistic/order?page=${page - 1}'"><span>Prev</span></li>`;
+    }
+    if (page > 2) {
+      liTag += `<li class="first numb" onclick="location.href='/statistic/order?page=1'"><span>1</span></li>`;
+      begin = true;
+      if (page > 3) {
+        liTag += `<li class="dots"><span>...</span></li>`;
+      }
+    }
+    if (page == totalPages) {
+      beforePage = beforePage - 2;
+    } else if (page == totalPages - 1) {
+      beforePage = beforePage - 1;
+    }
+    if (page == 1) {
+      afterPage = afterPage + 2;
+    } else if (page == 2) {
+      afterPage = afterPage + 1;
+    }
+    for (var plength = beforePage; plength <= afterPage; plength++) {
+      if (plength > totalPages) {
+        continue;
+      }
+      if (plength == 0) {
+        plength = plength + 1;
+      }
+      if (page == plength) {
+        active = "active";
+      } else {
+        active = "";
+      }
+
+      if (plength == 1 && begin == false) {
+        liTag += `<li class="numb ${active}" onclick="location.href='/statistic/order?page=${plength}'"><span>${plength}</span></li>`;
+
+      }
+      else if (plength == totalPages && end == false) {
+        liTag += `<li class="numb ${active}" onclick="location.href='/statistic/order?page=${plength}'"><span>${plength}</span></li>`;
+        end = true;
+      }
+      else if (plength != 1 && plength != totalPages) {
+        liTag += `<li class="numb ${active}" onclick="location.href='/statistic/order?page=${plength}'"><span>${plength}</span></li>`;
+      }
+    }
+    if (page < totalPages - 1) {
+      if (page < totalPages - 2) {
+        liTag += `<li class="dots"><span>...</span></li>`;
+      }
+      if (end == false)
+        liTag += `<li class="last numb" onclick="location.href='/statistic/order?page=${totalPages}'"><span>${totalPages}</span></li>`;
+    }
+    if (page < totalPages) {
+      liTag += `<li class="btn next" onclick="location.href='/statistic/order?page=${page + 1}'"><span>Next</span></li>`;
+    }
+    element.innerHTML = liTag; return liTag;
+  }
+</script> --}}

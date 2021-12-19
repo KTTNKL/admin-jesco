@@ -8,7 +8,9 @@ const orderSchema = new mongoose.Schema({
   total: Number,
   note: String,
   shippingFee: Number,
+  status: String,
   DateOfPurchase: Date
+
 });
 const order = mongoose.model("Order", orderSchema);
 
