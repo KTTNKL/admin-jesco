@@ -218,7 +218,7 @@ exports.order = async function (req, res) {
   let totalPage = await chartService.totalBillNum();
   totalPage = Math.ceil(totalPage / 4);
   
-  res.render("chart/views/bill", {
+  res.render("chart/views/order", {
     page: page, // Current Page
     totalPage, // Total Page
     bills: bills

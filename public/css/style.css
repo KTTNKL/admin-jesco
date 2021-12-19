@@ -12210,7 +12210,7 @@ svg.pulse-svg .third-circle {
   display: block;
 }
 .header-right .header-profile > a.nav-link .header-info strong {
-  color: #181c32;
+  color: RED;
 }
 .header-right .header-profile > a.nav-link .header-info small {
   display: block;
@@ -17793,7 +17793,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   margin-bottom: 10px;
   border-bottom: 1px solid #eee;
   font-size: 16px;
-  color: #000;
+  color: white;
   font-weight: 600;
 }
 [data-theme-version="dark"] .tab-nav-menu .nav-label {
@@ -17826,7 +17826,7 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
 }
 .tab-nav-menu li a {
   font-size: 15px;
-  color: #2d3240;
+  color: white;
   padding: 10px 0;
   display: block;
   font-weight: 400;
@@ -44837,7 +44837,7 @@ ol li {
 }
 
 #DZ_W_Fixed_Contant{
-  background-color: pink;
+  background-image: url("https://mondaycareer.com/wp-content/uploads/2020/11/background-%C4%91%E1%BA%B9p-3-1024x682.jpg");
 }
 #chartContent{
   height: 100%;
@@ -44854,13 +44854,14 @@ canvas{
 }
 
 .header-content{
-  background-color: pink;
+  /* background-color: rgb(208,160,251); */
+  background-image: url("https://mondaycareer.com/wp-content/uploads/2020/11/background-%C4%91%E1%BA%B9p-3-1024x682.jpg");
 }
 
 
 body{
     margin-top:20px;
-    color: #484b51;
+    color: red;
 }
 .text-secondary-d1 {
     color: #728299!important;
@@ -44974,8 +44975,6 @@ hr {
 .align-bottom {
     vertical-align: bottom!important;
 }
-
-
 
 
 

@@ -40,7 +40,7 @@ app.use(function (req, res, next) {
 });
 
 app.use("/", authRouter);
-app.use("/statistic",  statisticRouter);
+app.use("/statistic", loggedInUserGuard, statisticRouter);
 app.use("/userList", loggedInUserGuard, userListRouter);
 app.use("/profile", loggedInUserGuard, profileRouter);
 
