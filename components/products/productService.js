@@ -1,14 +1,19 @@
 const Product = require("./productModel");
 const PAGE_SIZE = 4;
 
-exports.listProducts = (page) => {
-  console.log(page);
+exports.listProducts = (page, query) => {
+  if (query.keyword) {
+    query.$or = [
+      { name: { $regex: query.keyword, $options: "i" } },
+      { brand: { $regex: query.keyword, $options: "i" } },
+    ];
+  }
 
   const Skip = (page - 1) * PAGE_SIZE;
-  return Product.find({}).skip(Skip).limit(PAGE_SIZE);
+  return Product.find(query).skip(Skip).limit(PAGE_SIZE);
 };
 
-exports.totalProductNum = () => Product.countDocuments();
+exports.totalProductNum = (query) => Product.find(query).countDocuments();
 exports.viewOne = (id) => Product.findById(id).lean();
 
 exports.create = (product, images) => {

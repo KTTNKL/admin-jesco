@@ -14,7 +14,18 @@
         ></i>
       </span>Add
     </button>
+<form action="/product">
+                                        
 
+                                        <div class="input-group mb-3">
+                                            <input type="text" name="keyword" class="form-control">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="submit">SEARCH</button>
+                                            </div>
+                                        </div>
+
+                                        
+                                    </form>
     <div class="row">
       <!-- item here-->
       {{#each products}}
@@ -76,14 +87,15 @@
   const element = document.querySelector(".pagination ul"); 
   let totalPages = {{totalPage}}; 
   let page = {{page}}; 
+  let keyword = "{{keyword}}" != 0 ? "&keyword=" + "{{keyword}}" : " ";
   element.innerHTML = createPagination(totalPages, page); 
   function createPagination(totalPages, page){ 
     let liTag = ''; 
     let active; 
     let beforePage = page - 1; 
     let afterPage = page + 1; 
-    if(page > 1){ liTag += `<li class="btn prev" onclick="location.href='/product?page=${page - 1}'"><span>Prev</span></li>`; } 
-    if(page > 2){ liTag += `<li class="first numb" onclick="location.href='/product?page=1'"><span>1</span></li>`; 
+    if(page > 1){ liTag += `<li class="btn prev" onclick="location.href='/product?page=${page - 1}${keyword}'"><span>Prev</span></li>`; } 
+    if(page > 2){ liTag += `<li class="first numb" onclick="location.href='/product?page=1${keyword}'"><span>1</span></li>`; 
       if(page > 3){
         liTag += `<li class="dots"><span>...</span></li>`; 
       } 
@@ -110,16 +122,16 @@
       }else{ 
         active = ""; 
       } 
-      liTag += `<li class="numb ${active}" onclick="location.href='/product?page=${plength}'"><span>${plength}</span></li>`;
+      liTag += `<li class="numb ${active}" onclick="location.href='/product?page=${plength}${keyword}'"><span>${plength}</span></li>`;
     } 
    if(page < totalPages - 1){ 
     if(page < totalPages - 2){ 
       liTag += `<li class="dots"><span>...</span></li>`; 
     } 
-    liTag += `<li class="last numb" onclick="location.href='/product?page=${totalPages}'"><span>${totalPages}</span></li>`;
+    liTag += `<li class="last numb" onclick="location.href='/product?page=${totalPages}${keyword}'"><span>${totalPages}</span></li>`;
   } 
   if (page < totalPages) { 
-    liTag += `<li class="btn next" onclick="location.href='/product?page=${page + 1}'"><span>Next</span></li>`; 
+    liTag += `<li class="btn next" onclick="location.href='/product?page=${page + 1}${keyword}'"><span>Next</span></li>`; 
   }
   element.innerHTML = liTag; return liTag; }
 </script>
