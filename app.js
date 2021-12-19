@@ -47,6 +47,7 @@ app.use("/profile", loggedInUserGuard, profileRouter);
 app.use("/userList", express.static(path.join(__dirname, "public")));
 app.use("/product", express.static(path.join(__dirname, "public")));
 app.use("/statistic", express.static(path.join(__dirname, "public")));
+app.use("/statistic/order", express.static(path.join(__dirname, "public")));
 
 app.use("/product", loggedInUserGuard, indexRouter);
 

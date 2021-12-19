@@ -1,4 +1,4 @@
-//const userService = require("./userService");
+
 const chartService = require("./chartService");
 
 exports.statisticByDay = async function (req, res) {
@@ -224,3 +224,14 @@ exports.order = async function (req, res) {
   });
 };
 
+
+exports.orderDetail = async function (req, res) {
+  let order;
+
+  try {
+    order = await chartService.viewOne(req.params.id);
+    order._id = order._id.toString();
+    console.log(order);
+  } catch (err) {}
+  res.render("chart/views/orderDetail", { order });
+};

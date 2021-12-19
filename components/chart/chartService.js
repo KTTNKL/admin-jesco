@@ -15,3 +15,5 @@ exports.listBill = async (page) => {
 };
 
 exports.totalBillNum = () => Chart.countDocuments();
+
+exports.viewOne = (id) => Chart.findById(id).lean();
