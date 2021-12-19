@@ -5,6 +5,8 @@ const chartController = require("./chartController");
 router.get("/byDay", chartController.statisticByDay);
 router.get("/byWeek", chartController.statisticByWeek);
 router.get("/bymonth", chartController.statisticByMonth);
+router.get("/byyear", chartController.statisticByYear);
+router.get("/byquarter", chartController.statisticByQuarter);
 
 module.exports = router;
 

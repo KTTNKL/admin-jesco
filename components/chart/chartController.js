@@ -54,22 +54,26 @@ exports.statisticByWeek = async function (req, res) {
   const statisticByWeek = [0, 0, 0, 0];
 
   var curr = new Date;
+  curr.setHours(0,1,0,0);
   var firstdayWeek4 = new Date(curr.setDate(curr.getDate() - curr.getDay()));
   var lastdayWeek4 = new Date(curr.setDate(curr.getDate() - curr.getDay()+6));
 
 
   curr = new Date(curr);
   curr.setDate(curr.getDate() - 7)
+  curr.setHours(0,1,0,0);
   var firstdayWeek3 = new Date(curr.setDate(curr.getDate() - curr.getDay()));
   var lastdayWeek3 = new Date(curr.setDate(curr.getDate() - curr.getDay()+6));
 
   curr = new Date(curr);
   curr.setDate(curr.getDate() - 7)
+  curr.setHours(0,1,0,0);
   var firstdayWeek2 = new Date(curr.setDate(curr.getDate() - curr.getDay()));
   var lastdayWeek2 = new Date(curr.setDate(curr.getDate() - curr.getDay()+6));
 
   curr = new Date(curr);
   curr.setDate(curr.getDate() - 7)
+  curr.setHours(0,1,0,0);
   var firstdayWeek1 = new Date(curr.setDate(curr.getDate() - curr.getDay()));
   var lastdayWeek1 = new Date(curr.setDate(curr.getDate() - curr.getDay()+6));
 
@@ -83,7 +87,7 @@ exports.statisticByWeek = async function (req, res) {
   for (let i = 0; i < order.length; i++) {
 
     let date = new Date(order[i].DateOfPurchase);
-    
+    date.setHours(0,1,0,0);
     if((date.getTime() >= firstdayWeek1.getTime() && date.getTime() <= lastdayWeek1.getTime()))
       statisticByWeek[0]++;
     else if((date.getTime() >= firstdayWeek2.getTime() && date.getTime() <= lastdayWeek2.getTime()))
@@ -94,7 +98,7 @@ exports.statisticByWeek = async function (req, res) {
       statisticByWeek[3]++;
   }
 
-  console.log(statisticByWeek);
+  
   res.render("chart/views/statisticByWeek", {Xaxist: week, statisticByWeek: statisticByWeek});
 };
 
@@ -125,4 +129,24 @@ exports.statisticByMonth = async function (req, res) {
   }
   
   res.render("chart/views/statisticByMonth", {statisticByMonth: statisticByMonth});
+};
+
+
+exports.statisticByYear = async function (req, res) {
+  const order = await chartService.listOrder();
+  const statisticByYear = [0, 0, 0, 0];
+  let curr = new Date;
+  let year = curr.getYear();
+  
+  for (let i = 0; i < order.length; i++) {
+
+    let date = new Date(order[i].DateOfPurchase);
+
+   if(date.getYear() === year - 3) statisticByYear[0]++;
+   else if(date.getYear() === year - 2) statisticByYear[1]++;
+   else if(date.getYear() === year - 1) statisticByYear[2]++;
+   else if(date.getYear() === year) statisticByYear[3]++;
+  }
+  
+  res.render("chart/views/statisticByYear", {year: year, statisticByYear: statisticByYear});
 };

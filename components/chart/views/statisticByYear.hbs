@@ -4,10 +4,21 @@
     <canvas id="myChart"></canvas>
 </div>
 <script>
-var xValues = ["January","February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+var xValues = [];
+let year = {{year}} - 3 - 100 + 2000;
+xValues.push(year.toString());
 
-var yValues =[{{statisticByMonth}}];
-var barColors = ["red", "green","blue","orange", "white","pink","black", 'rgba(255, 99, 132, 0.2)', 'rgba(255, 255, 132, 0.2)', 'rgba(0.2, 99, 132, 255)','rgba(99, 255, 132, 0.2)','rgba(99, 132, 255, 0.2)'];
+year = {{year}} - 2 - 100 + 2000;
+xValues.push(year.toString());
+
+year = {{year}} - 1 - 100 + 2000;
+xValues.push(year.toString());
+
+year = {{year}} - 100 + 2000;
+xValues.push(year.toString());
+
+var yValues =[{{statisticByYear}}];
+var barColors = ["red", "green","blue","orange"];
 
 new Chart("myChart", {
   type: "bar",
@@ -24,7 +35,7 @@ new Chart("myChart", {
     },
     title: {
       display: true,
-      text: "The Last 7 Days Orders",
+      text: "The Last 4 Years Orders",
       fontSize: 30,
       fontColor: "red"
     },
