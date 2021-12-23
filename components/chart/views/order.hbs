@@ -16,7 +16,8 @@
                   <tr>
                     <th>Order ID</th>
                     <th>Customer</th>
-                    <th>Status</th>
+                    <th>Current Status</th>
+                    <th>Change Status</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -26,6 +27,18 @@
                     <td><a href="/userList/{{this.userid}}">{{this.username}}</a></td>
                     <td>
                       {{this.status}}
+                    </td>
+                    <td>
+                      <div class="dropdown">
+                        <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuIconButton1"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Change status
+
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuIconButton1">
+                          <a class="dropdown-item" href="/statistic/order/processing/{{_id}}">PROCESSING</a>
+                          <a class="dropdown-item" href="/statistic/order/completed/{{_id}}">COMPLETED</a>
+                        </div>
+                      </div>
                     </td>
                   </tr>
                   {{/each}}

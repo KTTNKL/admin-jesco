@@ -23,3 +23,16 @@ exports.listProducts = async () => {
   let listProducts = await Product.find({}).lean();
   return listProducts;
 };
+
+
+exports.completeOrder = async (orderID) =>{
+  const result = await Chart.updateOne({ _id: orderID },
+      { $set: {status: String("COMPLETED")}});
+  return result;
+}
+
+exports.processOrder = async (orderID) =>{
+  const result = await Chart.updateOne({ _id: orderID },
+      { $set: {status: String("PROCESSING")}});
+  return result;
+}

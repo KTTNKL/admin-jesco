@@ -260,3 +260,18 @@ exports.topProducts = async function (req, res) {
   }
   res.render("chart/views/top10Products",{top10: top10});
 }
+
+exports.completed = async function (req, res){
+  const orderID = req.params.id;
+  const result = await chartService.completeOrder(orderID);
+  res.redirect(req.get('referer'));
+}
+
+
+exports.processing = async function (req, res){
+  const orderID = req.params.id;
+  const result = await chartService.processOrder(orderID);
+  res.redirect(req.get('referer'));
+}
+
+
