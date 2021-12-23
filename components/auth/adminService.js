@@ -24,3 +24,17 @@ exports.addNewAdmin = async (username, email, password) => {
 // exports.listAdmins = () => {
 //   return adminModel.find({}).lean();
 // };
+
+
+exports.update = (user) => {
+  adminModel.findOneAndUpdate(
+    { _id: user._id },
+    user,
+    { new: true },
+    (err, doc) => {
+      if (err) {
+        console.log(err);
+      }
+    }
+  );
+};

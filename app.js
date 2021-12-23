@@ -41,6 +41,7 @@ app.use(function (req, res, next) {
 
 app.use("/", authRouter);
 app.use("/statistic", loggedInUserGuard, statisticRouter);
+app.use("/profile", express.static(path.join(__dirname, "public")));
 app.use("/userList", loggedInUserGuard, userListRouter);
 app.use("/profile", loggedInUserGuard, profileRouter);
 
