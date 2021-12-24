@@ -14,7 +14,7 @@ exports.addAdmin = (req, res) => {
 exports.getAddAdmin = async (req, res) => {
   const { username, email, password } = req.body;
   const user = await adminService.addNewAdmin(username, email, password);
-  res.redirect("auth/views/login");
+  res.redirect("/login");
 };
 
 // exports.getAdminList = async (req, res) => {
